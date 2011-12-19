@@ -1,7 +1,3 @@
-
-//Computer Graphics HW1
-//Transformation and Projection
-
 #include <math.h>
 #include <stdlib.h>
 
@@ -685,27 +681,38 @@ void laplacianFilter(vector<GLfloat> src, vector<GLfloat> &dst, int aperture=7)
 					}
 				}
 			}*/
+			//Remapping
 			float g = src.at( i*height + j );
 			for(int k=0; k < sub.size(); k++)
 			{			
 				sub[k] = minf( maxf( sub.at(k), g - threshold), g + threshold );
 			}
 
-			IplImage *img0, *img1, *imgUp;
 			vector<GLfloat>  sub2, upSub;
+			/*IplImage *img0, *img1, *imgUp;
 			
 			int width = sqrt( (float)sub.size() );
-			/*img0 = cvCreateImage( cvSize(width, width), IPL_DEPTH_32F, 1);	
-			Relief2Image(sub, img0);*/
+			img0 = cvCreateImage( cvSize(width, width), IPL_DEPTH_32F, 1);	
+			Relief2Image(sub, img0);
 			
-			/*img1 = cvCreateImage( cvSize( width/2, width/2), IPL_DEPTH_32F, 1);
+			img1 = cvCreateImage( cvSize( ( width+1)/2, (width+1)/2 ), IPL_DEPTH_32F, 1);
 			imgUp = cvCreateImage( cvSize( width,  width), IPL_DEPTH_32F, 1);
-			subSample( sub, sub2 );
-			Relief2Image(sub2, img1);
-			cvPyrUp(img1, imgUp);*/
-			//cvSub(img0, imgUp, imgLa);
+			cvPyrDown(img0, img1);*/
+			/*for(int i=0; i < img1->width; i++)
+			{
+				for(int j=0; j < img1->height; j++)
+				{
+					double value = cvGetReal2D( img1, j, i);
+				}
+			}*/
+			
+			/*cvPyrUp(img1, imgUp);
+			Image2Relief(imgUp, upSub);*/
+			
+			
 			subSample( sub, sub2 );
 			upSample( sub2, upSub );
+
 			
 			
 			//Image2Relief(imgUp, upSub);
@@ -776,6 +783,8 @@ void BuildRelief(vector<GLfloat> &height, GLdouble *pThreadRelief, GLdouble *pTh
 			}
 		}
 }
+
+//1st Laplace
 void softPath(void)
 {	
 	//Do not change, setting a basic transformation
@@ -1069,6 +1078,7 @@ void equalizeHist(vector<GLfloat> src, vector<GLfloat> &dst)
 		
 }
 
+//Bas-Relief
 void reliefHistogram(void)
 {	
 	//Do not change, setting a basic transformation
@@ -1365,6 +1375,8 @@ void reliefHistogram(void)
 		
 	glPopMatrix();
 }
+
+//3D Scene
 void openglPath(void)
 {
     //view transform
@@ -1529,7 +1541,7 @@ void displayfont()
 		glutBitmapCharacter(font, mss[i]);
 	}
 
-	char mss1[30]="Bas-Relief";
+	char mss1[30]="1st Laplace";
 	
 	glWindowPos2i(10+(winWidth/3), winHeight-20);    //set font start position
 	for(unsigned int i=0; i<strlen(mss1); i++) {
@@ -1546,7 +1558,7 @@ void displayfont()
 		}
 	}
 	
-	char mss3[30]="Histogram Equalization";
+	char mss3[30]="Bas-Relief";
 	
 	glWindowPos2i(10+(winWidth*2/3), winHeight-20);    //set font start position
 	for(unsigned int i=0; i<strlen(mss1); i++) {
@@ -1843,5 +1855,3 @@ int main(int argc, char **argv)
 
 	cvWaitKey(0);
 }
-
-
