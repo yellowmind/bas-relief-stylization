@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="cghw3">
+</Property><Property Name="Solution File" Value="H:\政治大學\992課程資料\高等電腦圖學\Relief Project\99753002_cgfinal\cghw3.sln">
+</Property><Property Name="Date" Value="2011年9月14日">
+</Property><Property Name="Time" Value="下午 19:26:15">
+</Property></Properties><Event ErrorLevel="2" Project="cghw3" Source="cghw3.vcproj" Description="Failed to upgrade project file 'H:\政治大學\992課程資料\高等電腦圖學\Relief Project\99753002_cgfinal\cghw3.vcproj'.  Please make sure the file exists and is not write-protected.">
+</Event><Event ErrorLevel="2" Project="cghw3" Source="cghw3.vcproj" Description="Project upgrade failed.">
+</Event><Event ErrorLevel="3" Project="cghw3" Source="cghw3.vcproj" Description="Not Converted">
+</Event></UpgradeLog>
